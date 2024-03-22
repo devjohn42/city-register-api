@@ -1,17 +1,13 @@
 import { Router } from 'express';
-import { StatusCodes } from 'http-status-codes';
+//import { StatusCodes } from 'http-status-codes';
+import { CitiesController } from '../controllers/cities';
 
 const router = Router();
 
 router.get('/', (_, res) => {
-  console.log('server running GET');
-  return res.send('server running GET');
+  return res.send('server running');
 });
 
-router.post('/test', (req, res) => {
-  console.log(req.body);
-  console.log('server running POST');
-  return res.status(StatusCodes.OK).json(req.body);
-});
+router.post('/create-city', CitiesController.create);
 
 export { router };

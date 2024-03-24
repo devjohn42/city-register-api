@@ -25,4 +25,10 @@ router.get(
   CitiesController.getById,
 );
 
+router.put(
+  '/city-update/:id',
+  CitiesController.updateByIdValidation,
+  CitiesController.updateById,
+);
+
 export { router };

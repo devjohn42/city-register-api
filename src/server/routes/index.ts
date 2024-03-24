@@ -19,4 +19,10 @@ router.get(
   CitiesController.getAll,
 );
 
+router.get(
+  '/city/:id',
+  CitiesController.getByIdValidation,
+  CitiesController.getById,
+);
+
 export { router };

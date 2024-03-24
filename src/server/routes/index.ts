@@ -31,4 +31,10 @@ router.put(
   CitiesController.updateById,
 );
 
+router.delete(
+  '/city-delete/:id',
+  CitiesController.deteleByIdValidation,
+  CitiesController.deleteById,
+);
+
 export { router };

@@ -16,9 +16,17 @@ export const getByIdValidation = validation((getSchema) => ({
 }));
 
 export const getById = async (req: Request<IParamsProps>, res: Response) => {
-  console.log(req.params);
+  if (Number(req.params.id) === 2) {
+    return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
+      errors: {
+        default: 'register not found',
+      },
+    });
+  }
 
-  return res
-    .status(StatusCodes.INTERNAL_SERVER_ERROR)
-    .send('test not implemented');
+  return res.status(StatusCodes.OK).json({
+    id: req.params.id,
+    name: 'Tokyo',
+    country: 'Japan',
+  });
 };

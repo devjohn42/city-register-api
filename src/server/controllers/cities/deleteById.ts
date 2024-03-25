@@ -16,9 +16,13 @@ export const deteleByIdValidation = validation((getSchema) => ({
 }));
 
 export const deleteById = async (req: Request<IParamsProps>, res: Response) => {
-  console.log(req.params);
+  if (Number(req.params.id) === 2) {
+    return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
+      errors: {
+        default: 'register not found',
+      },
+    });
+  }
 
-  return res
-    .status(StatusCodes.INTERNAL_SERVER_ERROR)
-    .send('test not implemented');
+  return res.status(StatusCodes.NO_CONTENT).send();
 };

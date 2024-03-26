@@ -6,6 +6,7 @@
   "scripts": {
     "server:dev": "ts-node-dev ./src/index.ts",
     "test": "jest",
+    "production": "node ./build/index.js",
     "knex:migrate": "knex --knexfile ./src/server/database/knex/enviroment.ts migrate:latest",
     "knex:rollback": "knex --knexfile ./src/server/database/knex/enviroment.ts migrate:rollback",
     "knex:rollback-all": "knex --knexfile ./src/server/database/knex/enviroment.ts migrate:rollback --all",

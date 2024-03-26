@@ -2,19 +2,18 @@ import { Request, Response } from 'express';
 import * as yup from 'yup';
 import { validation } from '../../shared/middlewares';
 import { StatusCodes } from 'http-status-codes';
+import { ICity } from '../../database/models';
 
 interface IParamsProps {
   id?: number;
 }
-
-interface IBodyProps {
-  name: string;
-}
+interface IBodyProps extends Omit<ICity, 'id'> {}
 
 export const updateByIdValidation = validation((getSchema) => ({
   body: getSchema<IBodyProps>(
     yup.object().shape({
       name: yup.string().required().min(3).max(150),
+      country: yup.string().required().min(3).max(150),
     }),
   ),
   params: getSchema<IParamsProps>(

@@ -1,5 +1,6 @@
 import { Router } from 'express';
 import { CitiesController } from '../controllers/cities';
+import { PeopleController } from '../controllers';
 
 const router = Router();
 
@@ -35,6 +36,12 @@ router.delete(
   '/city-delete/:id',
   CitiesController.deteleByIdValidation,
   CitiesController.deleteById,
+);
+
+router.post(
+  '/create-person',
+  PeopleController.createValidation,
+  PeopleController.create,
 );
 
 export { router };

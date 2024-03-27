@@ -44,4 +44,10 @@ router.post(
   PeopleController.create,
 );
 
+router.delete(
+  '/person-delete/:id',
+  PeopleController.deteleByIdValidation,
+  PeopleController.deleteById,
+);
+
 export { router };

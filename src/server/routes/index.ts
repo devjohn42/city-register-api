@@ -1,6 +1,5 @@
 import { Router } from 'express';
-import { CitiesController } from '../controllers/cities';
-import { PeopleController } from '../controllers';
+import { CitiesController, PeopleController } from './../controllers';
 
 const router = Router();
 
@@ -51,7 +50,7 @@ router.get(
 );
 
 router.get(
-  'person/:id',
+  '/person/:id',
   PeopleController.getByIdValidation,
   PeopleController.getById,
 );

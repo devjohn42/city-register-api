@@ -5,7 +5,6 @@ describe('DeleteById City', () => {
   it('delete register', async () => {
     const resp1 = await testServer.post('/create-city').send({
       name: 'Tokyo',
-      country: 'Japan',
     });
     expect(resp1.statusCode).toEqual(StatusCodes.CREATED);
 

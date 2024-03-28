@@ -5,7 +5,6 @@ describe('GetById City', () => {
   it('Search an register by id', async () => {
     const resp1 = await testServer.post('/create-city').send({
       name: 'Tokyo',
-      country: 'Japan',
     });
 
     expect(resp1.statusCode).toEqual(StatusCodes.CREATED);
@@ -14,7 +13,6 @@ describe('GetById City', () => {
 
     expect(resSearch.statusCode).toEqual(StatusCodes.OK);
     expect(resSearch.body).toHaveProperty('name');
-    expect(resSearch.body).toHaveProperty('country');
   });
   it('Search an register if it dot not exist', async () => {
     const resp1 = await testServer.get('/city/2').send();

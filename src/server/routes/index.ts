@@ -55,6 +55,12 @@ router.get(
   PeopleController.getById,
 );
 
+router.put(
+  '/person-update/:id',
+  PeopleController.updateByIdValidation,
+  PeopleController.updateById,
+);
+
 router.delete(
   '/person-delete/:id',
   PeopleController.deteleByIdValidation,

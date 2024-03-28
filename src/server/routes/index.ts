@@ -44,6 +44,12 @@ router.post(
   PeopleController.create,
 );
 
+router.get(
+  '/people',
+  PeopleController.getAllValidation,
+  PeopleController.getAll,
+);
+
 router.delete(
   '/person-delete/:id',
   PeopleController.deteleByIdValidation,

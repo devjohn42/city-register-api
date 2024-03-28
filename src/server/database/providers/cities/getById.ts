@@ -4,7 +4,7 @@ import { ICity } from '../../models';
 
 export const getById = async (id: number): Promise<ICity | Error> => {
   try {
-    const result = await Knex(TableNames)
+    const result = await Knex(TableNames.city)
       .select('*')
       .where('id', '=', id)
       .first();

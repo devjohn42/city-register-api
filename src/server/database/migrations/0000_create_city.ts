@@ -15,6 +15,6 @@ export async function up(knex: Knex) {
 
 export async function down(knex: Knex) {
   return knex.schema.dropTable(TableNames.city).then(() => {
-    console.log(`✨ Create table ${TableNames.city}`);
+    console.log(`✨ Delete table ${TableNames.city}`);
   });
 }

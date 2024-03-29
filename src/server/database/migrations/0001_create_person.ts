@@ -19,12 +19,12 @@ export async function up(knex: Knex) {
       table.comment('Table used to storege people');
     })
     .then(() => {
-      console.log(`#Create table ${TableNames.person}`);
+      console.log(`✨ Create table ${TableNames.person}`);
     });
 }
 
 export async function down(knex: Knex) {
   return knex.schema.dropTable(TableNames.person).then(() => {
-    console.log(`# Create table ${TableNames.person}`);
+    console.log(`✨ Create table ${TableNames.person}`);
   });
 }

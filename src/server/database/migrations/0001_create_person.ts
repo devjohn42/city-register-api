@@ -6,7 +6,7 @@ export async function up(knex: Knex) {
     .createTable(TableNames.person, (table) => {
       table.bigIncrements('id').primary().index();
       table.string('name').index().notNullable();
-      table.string('email').index().notNullable();
+      table.string('email').unique().notNullable();
       table
         .bigInteger('cityId')
         .index()
@@ -15,6 +15,8 @@ export async function up(knex: Knex) {
         .inTable(TableNames.city)
         .onUpdate('CASCADE')
         .onDelete('RESTRICT');
+
+      table.comment('Table used to storege people');
     })
     .then(() => {
       console.log(`#Create table ${TableNames.person}`);

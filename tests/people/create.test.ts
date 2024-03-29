@@ -22,6 +22,25 @@ describe('Create Person', () => {
     expect(resp1.statusCode).toEqual(StatusCodes.CREATED);
     expect(typeof resp1.body).toEqual('number');
   });
+  it('Try to create a register with a duplicate email', async () => {
+    const resp1 = await testServer.post('/create-person').send({
+      name: 'Mark',
+      email: 'same@gmail.com',
+      cityId,
+    });
+
+    expect(resp1.statusCode).toEqual(StatusCodes.CREATED);
+    expect(typeof resp1.body).toEqual('number');
+
+    const resp2 = await testServer.post('/create-person').send({
+      name: 'John',
+      email: 'same@gmail.com',
+      cityId,
+    });
+
+    expect(resp2.statusCode).toEqual(StatusCodes.INTERNAL_SERVER_ERROR);
+    expect(resp2.body).toHaveProperty('errors.default');
+  });
   it('Try create an register with a short name', async () => {
     const resp1 = await testServer.post('/create-person').send({
       name: 'Jo',

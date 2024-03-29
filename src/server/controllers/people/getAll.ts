@@ -41,7 +41,7 @@ export const getAll = async (
     });
   }
 
-  res.setHeader('acces-control-expose-headers', 'x-total-count');
+  res.setHeader('access-control-expose-headers', 'x-total-count');
   res.setHeader('x-total-count', count);
 
   return res.status(StatusCodes.OK).json(result);

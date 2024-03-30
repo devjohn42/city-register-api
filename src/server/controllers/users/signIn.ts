@@ -4,6 +4,7 @@ import { validation } from '../../shared/middlewares';
 import { StatusCodes } from 'http-status-codes';
 import { IUser } from '../../database/models';
 import { UsersProvider } from '../../database/providers/users';
+import { passwordCrypto } from '../../shared/services/passwordCrypto';
 
 interface IBodyProps extends Omit<IUser, 'id' | 'name'> {}
 
@@ -34,13 +35,26 @@ export const signIn = async (
     });
   }
 
-  if (password !== result.password) {
+  if (!result) {
+    return res.status(StatusCodes.UNAUTHORIZED).json({
+      errors: {
+        default: 'User not found',
+      },
+    });
+  }
+
+  const passwordMatch = await passwordCrypto.verifyPassword(
+    password,
+    result.password,
+  );
+
+  if (!passwordMatch) {
     return res.status(StatusCodes.UNAUTHORIZED).json({
       errors: {
         default: 'Invalid email or passwords',
       },
     });
-  } else {
-    return res.status(StatusCodes.OK).json({ accessToken: 'teste' });
   }
+
+  return res.status(StatusCodes.OK).json({ accessToken: 'teste' });
 };

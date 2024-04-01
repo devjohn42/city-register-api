@@ -1,7 +1,7 @@
 import { TableNames } from '../../enums/eTablesNames';
 import { Knex } from '../../knex';
 import { IUser } from '../../models';
-import { passwordCrypto } from '../../../shared/services/passwordCrypto';
+import { passwordCrypto } from '../../../shared/services';
 
 export const create = async (
   user: Omit<IUser, 'id'>,

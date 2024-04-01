@@ -6,7 +6,7 @@ export const ensureAuthenticated: RequestHandler = async (req, res, next) => {
   const { authorization } = req.headers;
   if (!authorization) {
     return res.status(StatusCodes.UNAUTHORIZED).json({
-      errros: { default: 'Unauthenticated' },
+      errors: { default: 'Unauthenticated' },
     });
   }
 
